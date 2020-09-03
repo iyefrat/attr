@@ -33,21 +33,23 @@ app = App
     , (red             , Brick.Util.fg Vty.red)
     , (blue            , Brick.Util.fg Vty.blue)
     , (yellow          , Brick.Util.fg Vty.yellow)
-    , (magenta, Vty.withStyle (Brick.Util.fg Vty.magenta) Vty.underline)
-    , (bold            , Vty.withStyle defAttr Vty.bold)
-    , (standout        , Vty.withStyle defAttr Vty.standout)
-    , (italic          , Vty.withStyle defAttr Vty.italic)
-    , (underline       , Vty.withStyle defAttr Vty.underline)
-    , (reverseVideo    , Vty.withStyle defAttr Vty.reverseVideo)
-    , (dim             , Vty.withStyle defAttr Vty.dim)
-    , (blink           , Vty.withStyle defAttr Vty.blink)
+    , ( magentaUnderline
+      , Vty.withStyle (Brick.Util.fg Vty.magenta) Vty.underline
+      )
+    , (bold        , Vty.withStyle defAttr Vty.bold)
+    , (standout    , Vty.withStyle defAttr Vty.standout)
+    , (italic      , Vty.withStyle defAttr Vty.italic)
+    , (underline   , Vty.withStyle defAttr Vty.underline)
+    , (reverseVideo, Vty.withStyle defAttr Vty.reverseVideo)
+    , (dim         , Vty.withStyle defAttr Vty.dim)
+    , (blink       , Vty.withStyle defAttr Vty.blink)
     ]
   }
 
-green, red, magenta, blue, yellow :: AttrName
+green, red, magentaUnderline, blue, yellow :: AttrName
 green = "green"
 red = "red"
-magenta = "magenta"
+magentaUnderline = "magentaUnderline"
 blue = "blue"
 yellow = "yellow"
 
@@ -75,133 +77,133 @@ buildInitialState = do
 
 drawWithAttr :: Widget n
 drawWithAttr =
-  (str "withAttr magenta (")
+  (str "withAttr\n  magentaUnderline (\n ")
     <=> (withAttr
-          magenta
+          magentaUnderline
           (   (withDefAttr green $ center $ str
-                "(withDefAttr green \n$ center \n$ str \"this\")"
+                "(withDefAttr green \n  $ center \n  $ str \"this\")"
               )
           <=> (withAttr red $ center $ str
-                "(withDefAttr red \n$ center \n$ str \"this\")"
+                "(withDefAttr red \n  $ center \n  $ str \"this\")"
               )
-          <=> (center $ str "(center \n$ str \"this\")")
+          <=> (center $ str "(center \n  $ str \"this\")")
           )
         )
 
 drawWithDefAttr :: Widget n
 drawWithDefAttr =
-  (str "withDefAttr magenta (")
+  (str "withDefAttr\n  magentaUnderline (\n ")
     <=> (withDefAttr
-          magenta
+          magentaUnderline
           (   (withDefAttr green $ center $ str
-                "(withDefAttr green \n$ center \n$ str \"this\")"
+                "(withDefAttr green \n  $ center \n  $ str \"this\")"
               )
           <=> (withAttr red $ center $ str
-                "(withDefAttr red \n$ center \n$ str \"this\")"
+                "(withDefAttr red \n  $ center \n  $ str \"this\")"
               )
-          <=> (center $ str "(center \n$ str \"this\")")
+          <=> (center $ str "(center \n  $ str \"this\")")
           )
         )
 overGreen :: Widget n
 overGreen =
-  (str "overrideAttr green magenta (")
+  (str "overrideAttr\n  green magentaUnderline (\n ")
     <=> (overrideAttr
           green
-          magenta
+          magentaUnderline
           (   (withDefAttr green $ center $ str
-                "(withDefAttr green \n$ center \n$ str \"this\")"
+                "(withDefAttr green \n  $ center \n  $ str \"this\")"
               )
           <=> (withAttr red $ center $ str
-                "(withDefAttr red \n$ center \n$ str \"this\")"
+                "(withDefAttr red \n  $ center \n  $ str \"this\")"
               )
-          <=> (center $ str "(center \n$ str \"this\")")
+          <=> (center $ str "(center \n  $ str \"this\")")
           )
         )
 
 
 overRed :: Widget n
 overRed =
-  (str "overrideAttr red magenta (")
+  (str "overrideAttr\n  red magentaUnderline (\n ")
     <=> (overrideAttr
           red
-          magenta
+          magentaUnderline
           (   (withDefAttr green $ center $ str
-                "(withDefAttr green \n$ center \n$ str \"this\")"
+                "(withDefAttr green \n  $ center \n  $ str \"this\")"
               )
           <=> (withAttr red $ center $ str
-                "(withDefAttr red \n$ center \n$ str \"this\")"
+                "(withDefAttr red \n  $ center \n  $ str \"this\")"
               )
-          <=> (center $ str "(center \n$ str \"this\")")
+          <=> (center $ str "(center \n  $ str \"this\")")
           )
         )
 
 overGreenWithBlue :: Widget n
 overGreenWithBlue =
-  (str "withAttr blue \n(overrideAttr green magenta (")
+  (str "withAttr blue \n  (overrideAttr\n    green magentaUnderline (")
     <=> (withAttr
           blue
           (overrideAttr
             green
-            magenta
+            magentaUnderline
             (   (withDefAttr green $ center $ str
-                  "(withDefAttr green \n$ center \n$ str \"this\")"
+                  "(withDefAttr green \n  $ center \n  $ str \"this\")"
                 )
             <=> (withAttr red $ center $ str
-                  "(withDefAttr red \n$ center \n$ str \"this\")"
+                  "(withDefAttr red \n  $ center \n  $ str \"this\")"
                 )
-            <=> (center $ str "(center \n$ str \"this\")")
+            <=> (center $ str "(center \n  $ str \"this\")")
             )
           )
         )
 overRedWithDefBlue :: Widget n
 overRedWithDefBlue =
-  (str "withDefAttr blue \n(overrideAttr green magenta (")
+  (str "withDefAttr blue \n  (overrideAttr\n    green magentaUnderline (")
     <=> (withDefAttr
           blue
           (overrideAttr
             green
-            magenta
+            magentaUnderline
             (   (withDefAttr green $ center $ str
-                  "(withDefAttr green \n$ center \n$ str \"this\")"
+                  "(withDefAttr green \n  $ center \n  $ str \"this\")"
                 )
             <=> (withAttr red $ center $ str
-                  "(withDefAttr red \n$ center \n$ str \"this\")"
+                  "(withDefAttr red \n  $ center \n  $ str \"this\")"
                 )
-            <=> (center $ str "(center \n$ str \"this\")")
+            <=> (center $ str "(center \n  $ str \"this\")")
             )
           )
         )
 overInner :: Widget n
 overInner =
-  (str "")
+  (str "\n\n ")
     <=> (overrideAttr
           red
-          magenta
+          magentaUnderline
           (   ( withDefAttr green
-              $ overrideAttr green magenta
+              $ overrideAttr green magentaUnderline
               $ center
               $ str
-                  "(withDefAttr green \n$ overrideAttr green magenta \n$ center \n$ str \"this\")"
+                  "(withDefAttr green \n  $ overrideAttr\n     green magentaUnderline \n  $ center \n  $ str \"this\")"
               )
           <=> ( withAttr red
-              $ overrideAttr red magenta
+              $ overrideAttr red magentaUnderline
               $ center
               $ str
-                  "(withDefAttr red \n$ overrideAttr red magenta$ center \n$ str \"this\")"
+                  "(withDefAttr red \n  $ overrideAttr\n     red magentaUnderline\n  $ center \n  $ str \"this\")"
               )
-          <=> (center $ str "(center \n$ str \"this\")")
+          <=> (center $ str "(center \n  $ str \"this\")")
           )
         )
 
 drawUI :: s -> [Widget n]
 drawUI _ =
-  [ (   drawWithAttr
-    <+> drawWithDefAttr
-    <+> overGreen
-    <+> overRed
-    <+> overGreenWithBlue
-    <+> overRedWithDefBlue
-    <+> overInner
+  [ (   border drawWithAttr
+    <+> border drawWithDefAttr
+    <+> border overGreen
+    <+> border overRed
+    <+> border overGreenWithBlue
+    <+> border overRedWithDefBlue
+    <+> border overInner
     )
   ]
 
