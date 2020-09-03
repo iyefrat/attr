@@ -84,9 +84,9 @@ drawWithAttr =
                 "(withDefAttr green \n  $ center \n  $ str \"this\")"
               )
           <=> (withAttr red $ center $ str
-                "(withAttr red \n  $ center \n  $ str \"this\")"
+                "<=>\n(withAttr red \n  $ center \n  $ str \"this\")"
               )
-          <=> (center $ str "(center \n  $ str \"this\")")
+          <=> (center $ str "<=>\n(center \n  $ str \"this\")")
           )
         )
 
@@ -99,9 +99,9 @@ drawWithDefAttr =
                 "(withDefAttr green \n  $ center \n  $ str \"this\")"
               )
           <=> (withAttr red $ center $ str
-                "(withAttr red \n  $ center \n  $ str \"this\")"
+                "<=>\n(withAttr red \n  $ center \n  $ str \"this\")"
               )
-          <=> (center $ str "(center \n  $ str \"this\")")
+          <=> (center $ str "<=>\n(center \n  $ str \"this\")")
           )
         )
 overGreen :: Widget n
@@ -114,9 +114,9 @@ overGreen =
                 "(withDefAttr green \n  $ center \n  $ str \"this\")"
               )
           <=> (withAttr red $ center $ str
-                "(withAttr red \n  $ center \n  $ str \"this\")"
+                "<=>\n(withAttr red \n  $ center \n  $ str \"this\")"
               )
-          <=> (center $ str "(center \n  $ str \"this\")")
+          <=> (center $ str "<=>\n(center \n  $ str \"this\")")
           )
         )
 
@@ -131,9 +131,9 @@ overRed =
                 "(withDefAttr green \n  $ center \n  $ str \"this\")"
               )
           <=> (withAttr red $ center $ str
-                "(withAttr red \n  $ center \n  $ str \"this\")"
+                "<=>\n(withAttr red \n  $ center \n  $ str \"this\")"
               )
-          <=> (center $ str "(center \n  $ str \"this\")")
+          <=> (center $ str "<=>\n(center \n  $ str \"this\")")
           )
         )
 
@@ -149,15 +149,15 @@ overGreenWithBlue =
                   "(withDefAttr green \n  $ center \n  $ str \"this\")"
                 )
             <=> (withAttr green $ center $ str
-                  "(withAttr green \n  $ center \n  $ str \"this\")"
+                  "<=>\n(withAttr green \n  $ center \n  $ str \"this\")"
                 )
             <=> (withDefAttr red $ center $ str
-                  "(withDefAttr red \n  $ center \n  $ str \"this\")"
+                  "<=>\n(withDefAttr red \n  $ center \n  $ str \"this\")"
                 )
             <=> (withAttr red $ center $ str
-                  "(withAttr red \n  $ center \n  $ str \"this\")"
+                  "<=>\n(withAttr red \n  $ center \n  $ str \"this\")"
                 )
-            <=> (center $ str "(center \n  $ str \"this\")")
+            <=> (center $ str "<=>\n(center \n  $ str \"this\")")
             )
           )
         )
@@ -173,15 +173,15 @@ overRedWithDefBlue =
                   "(withDefAttr green \n  $ center \n  $ str \"this\")"
                 )
             <=> (withAttr green $ center $ str
-                  "(withAttr green \n  $ center \n  $ str \"this\")"
+                  "<=>\n(withAttr green \n  $ center \n  $ str \"this\")"
                 )
             <=> (withDefAttr red $ center $ str
-                  "(withDefAttr red \n  $ center \n  $ str \"this\")"
+                  "<=>\n(withDefAttr red \n  $ center \n  $ str \"this\")"
                 )
             <=> (withAttr red $ center $ str
-                  "(withAttr red \n  $ center \n  $ str \"this\")"
+                  "<=>\n(withAttr red \n  $ center \n  $ str \"this\")"
                 )
-            <=> (center $ str "(center \n  $ str \"this\")")
+            <=> (center $ str "<=>\n(center \n  $ str \"this\")")
             )
           )
         )
@@ -201,9 +201,9 @@ overInner =
               $ overrideAttr red magentaUnderline
               $ center
               $ str
-                  "(withDefAttr red \n  $ overrideAttr\n     red magentaUnderline\n  $ center \n  $ str \"this\")"
+                  "<=>\n(withDefAttr red \n  $ overrideAttr\n     red magentaUnderline\n  $ center \n  $ str \"this\")"
               )
-          <=> (center $ str "(center \n  $ str \"this\")")
+          <=> (center $ str "<=>\n(center \n  $ str \"this\")")
           )
         )
 
