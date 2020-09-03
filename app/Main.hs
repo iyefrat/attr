@@ -1,7 +1,10 @@
-module Main (main) where
+module Main
+  ( main
+  )
+where
 
-import Attr (someFunc)
+import           Attr                           ( start )
 
 
 main :: IO ()
-main = someFunc
+main = start
